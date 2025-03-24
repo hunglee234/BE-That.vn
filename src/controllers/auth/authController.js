@@ -55,7 +55,7 @@ exports.register = async (req, res) => {
 exports.login = async (req, res) => {
   const { username, password } = req.body;
   try {
-    const account = await Account.findOne({ username });
+    const account = await Account.findOne({ username }).populate("role");
     if (!account) {
       return res.status(404).json({
         message: "Account not found.",
@@ -69,7 +69,7 @@ exports.login = async (req, res) => {
     }
 
     const token = jwt.sign(
-      { id: account._id, username },
+      { id: account._id, role: account.role.name },
       process.env.SECRET_KEY,
       { expiresIn: process.env.JWT_EXPIRES_IN }
     );
@@ -85,6 +85,7 @@ exports.login = async (req, res) => {
         username: account.username,
         phone: account.phone || null,
         email: account.email,
+        role: account.role.name,
       },
     });
   } catch (error) {
