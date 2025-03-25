@@ -1,10 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const roleRoutes = require("../../routes/admin/role/roleRoutes");
-const permissionRoutes = require("../../routes/admin/permission/permissonRoutes");
+const permissionsRoutes = require("../permissons/permissonsRoutes");
+const accountRoutes = require("../../routes/admin/account/accountRoutes");
 
 router.use("/role", roleRoutes);
 
-router.use("/permission", permissionRoutes);
+router.use("/permissions", permissionsRoutes);
+
+router.use("/account", accountRoutes);
 
 module.exports = router;

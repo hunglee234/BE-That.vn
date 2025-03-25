@@ -18,6 +18,7 @@ exports.authenticateToken = (req, res, next) => {
 // Middleware kiểm tra vai trò
 exports.authorizeRole = (roles) => (req, res, next) => {
   console.log(req.user.role);
+  console.log("aaaa");
   // Nếu roles không được truyền, trả lỗi
   if (!roles || roles.length === 0) {
     return res

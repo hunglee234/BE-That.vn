@@ -4,10 +4,13 @@ const router = express.Router();
 const {
   createPermission,
   getAllPermission,
-} = require("../../../controllers/admin/permission/permissionController");
+  deletePermisson,
+} = require("../../../controllers/permission/permissionController");
 
 router.post("/", createPermission);
 
 router.get("/", getAllPermission);
+
+router.delete("/:id", deletePermisson);
 
 module.exports = router;

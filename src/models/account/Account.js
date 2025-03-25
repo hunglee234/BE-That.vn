@@ -26,9 +26,15 @@ const accountSchema = new mongoose.Schema(
       ref: "Role",
       required: false,
     },
-    permission: {
+    customPermissions: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Permission",
+      },
+    ],
+    createdBy: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Permission",
+      ref: "Account",
       required: false,
     },
     status: {

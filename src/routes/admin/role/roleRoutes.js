@@ -6,7 +6,7 @@ const {
   updateRole,
   getAllRoles,
   getRoleById,
-} = require("../../../controllers/admin/role/roleController");
+} = require("../../../controllers/role/roleController");
 
 router.post("/", createRole);
 
